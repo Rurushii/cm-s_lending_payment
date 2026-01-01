@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lending Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Lending Manager</h1>
+    
+    <div class="main-layout">
+      <div class="menu-side">
+        
+        <div class="section-box">
+            <h3>1. Loan Setup</h3>
+            <label>Borrower's Name</label>
+            <input type="text" id="borrowerName" placeholder="Juan Dela Cruz">
+
+            <div class="row">
+                <div class="half">
+                    <label>Principal (₱)</label>
+                    <input type="text" id="principal" placeholder="10,000" oninput="formatPrincipal()">
+                </div>
+                <div class="half">
+                    <label>Interest (%)</label>
+                    <input type="number" id="interestRate" placeholder="20" value="20" oninput="autoCalculateTotal()">
+                </div>
+            </div>
+
+            <label>Loan Date (Start)</label>
+            <input type="date" id="loanDate">
+
+            <label style="color:#d35400;">Payment Due Date</label>
+            <input type="date" id="dueDate">
+            <small style="display:block; margin-top:-8px; margin-bottom:10px; color:#888; font-size:12px;">
+                *Penalty starts the day <b>after</b> this date (12:00 AM).
+            </small>
+            
+            <label>Total to Collect (Auto-calc)</label>
+            <input type="text" id="amount" readonly style="background-color: #eee; font-weight: bold; color: #333;">
+
+            <div class="rule-box">
+                <span>⚠️</span>
+                <span><b>Penalty Rule:</b> If payment exceeds the due date, a <b>₱50 penalty</b> is added for every <b>5 hours</b> passed.</span>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h3>2. Payment Entry</h3>
+            <label>Actual Payment Date</label>
+            <input type="date" id="paymentDate">
+
+            <label>Actual Payment Time</label>
+            <input type="time" id="paymentTime">
+        </div>
+
+        <div class="button-group">
+          <button class="calc-btn" onclick="calculate()">Calculate Status</button>
+          
+          <button id="finalDownloadBtn" class="download-btn" onclick="downloadSmartReceipt()" style="display:none;">📥 Download Official Receipt</button>
+          
+          <button class="copy-btn" onclick="copyToClipboard()">📋 Copy for Messenger</button>
+          <button class="reset-btn" onclick="resetForm()">Reset All</button>
+        </div>
+      </div>
+
+      <div class="results-side">
+        <div id="output" class="output-box">
+          <p style="color: #888; text-align: center;">Enter Loan Details to begin...</p>
+        </div>
+        <div id="breakdown" class="breakdown-box"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="final-receipt-image" style="position: absolute; left: -9999px; width: 400px; background: white; padding: 30px; color: black; font-family: 'Courier New', Courier, monospace; border: 1px solid #000;">
+      <div id="receipt-content"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

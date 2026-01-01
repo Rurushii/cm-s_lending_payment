@@ -1,0 +1,118 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ffc0cb, #87cefa);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 950px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+h1 { text-align: center; color: #ff69b4; margin-bottom: 25px; }
+h3 { margin-top: 0; color: #555; border-bottom: 2px solid #eee; padding-bottom: 5px; font-size: 1.1em; }
+
+.main-layout { display: flex; gap: 30px; flex-wrap: wrap; }
+.menu-side, .results-side { flex: 1; min-width: 300px; }
+
+/* Section Styling */
+.section-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+/* Rule Box Styling (Yellow Note) */
+.rule-box {
+  background: #fff3cd; /* Soft Yellow */
+  color: #856404;      /* Dark Goldenrod text */
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffeeba;
+  font-size: 0.85em;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row { display: flex; gap: 10px; }
+.half { flex: 1; }
+
+label { font-weight: bold; color: #4682b4; display: block; margin-bottom: 5px; font-size: 0.9em; }
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.button-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px;}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Button Colors */
+.calc-btn { background: linear-gradient(90deg, #ff69b4, #ff85c1); color: white; }
+.download-btn { background: linear-gradient(90deg, #4682b4, #5f9ea0); color: white; } /* Steel Blue */
+.copy-btn { background: linear-gradient(90deg, #f39c12, #f1c40f); color: white; } /* Orange */
+.reset-btn { background: #e0e0e0; color: #666; }
+
+button:hover { opacity: 0.9; transform: translateY(-2px); }
+
+.output-box, .breakdown-box {
+  background: #f0f8ff;
+  border-left: 6px solid #ff69b4;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.breakdown-box {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #add8e6;
+}
+.breakdown-box::-webkit-scrollbar { width: 6px; }
+.breakdown-box::-webkit-scrollbar-thumb { background: #87cefa; border-radius: 10px; }
+
+/* Error State: Red Border */
+.input-error {
+    border: 2px solid #ff4d4d !important;
+    background-color: #fff0f0;
+}
+
+/* Animation: Shake the input if empty */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
